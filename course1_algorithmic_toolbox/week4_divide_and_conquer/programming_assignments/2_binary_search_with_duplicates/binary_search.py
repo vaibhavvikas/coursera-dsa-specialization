@@ -2,13 +2,18 @@ known_loc = {}
 
 
 def binary_search_algo(keys, low, high, query):
+    global known_loc
+
     if high >= low:
+        if keys[low] == query:
+            known_loc[query] = low
+            return low
+
         mid = low + (high-low)//2
 
         if keys[mid] == query:
             if keys[mid-1] == query:
-                return binary_search_algo(keys, low, mid-1, query)
-            global known_loc
+                return binary_search_algo(keys, low + 1, mid-1, query)
             known_loc[query] = mid
             return mid
 
