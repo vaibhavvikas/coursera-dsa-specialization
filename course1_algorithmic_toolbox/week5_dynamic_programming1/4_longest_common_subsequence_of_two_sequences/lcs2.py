@@ -1,22 +1,29 @@
-#Uses python3
+# python3
+import numpy
 
-import sys
+def lcs2(first_sequence, second_sequence):
+    assert len(first_sequence) <= 100
+    assert len(second_sequence) <= 100
 
-def lcs2(a, b):
-    #write your code here
-    return min(len(a), len(b))
+    dp_list = numpy.zeros((len(first_sequence) + 1, len(second_sequence) + 1))
+
+    for i in range(1, len(first_sequence) + 1):
+        for j in range(1, len(second_sequence) + 1):
+            if first_sequence[i - 1] == second_sequence[j - 1]:
+                dp_list[i][j] = dp_list[i - 1][j - 1] + 1
+            if first_sequence[i - 1] != second_sequence[j - 1]:
+                dp_list[i][j] = max(dp_list[i - 1][j], dp_list[i][j - 1])
+
+    return int(dp_list[-1][-1])
+
 
 if __name__ == '__main__':
-    input = sys.stdin.read()
-    data = list(map(int, input.split()))
+    n = int(input())
+    a = list(map(int, input().split()))
+    assert len(a) == n
 
-    n = data[0]
-    data = data[1:]
-    a = data[:n]
-
-    data = data[n:]
-    m = data[0]
-    data = data[1:]
-    b = data[:m]
+    m = int(input())
+    b = list(map(int, input().split()))
+    assert len(b) == m
 
     print(lcs2(a, b))
