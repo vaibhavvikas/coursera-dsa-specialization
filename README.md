@@ -10,3 +10,9 @@ Coursera Data Structures and Algorithms Specialization
     - Week 4. Divide and Conquer
     - Week 5. Dynamic Programming 1
     - Week 6. Dynamic Programming 2
+
+- __Course 2. Data Structures__
+    - Week 1. Basic Data Structures
+    - Week 2. Priority Queues and Disjoint Sets
+    - Week 3. Hash Tables
+    - Week 4. Binary Search Trees
